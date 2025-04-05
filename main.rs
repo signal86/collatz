@@ -13,5 +13,4 @@ fn main() {
     for n in 1..5000001 {
         collatz(n);
     }
-    println!("all numbers checked");
 }
