@@ -9,11 +9,16 @@ import (
 func collatz(n uint64, cache *sync.Map, wg *sync.WaitGroup) {
 	defer wg.Done()
 	original := n
+	cycle := make(map[uint64]bool)
 	for n != 1 {
 		if _, ok := cache.Load(n); ok {
 			cache.Store(original, true)
 			return
 		}
+		if cycle[n] {
+			break
+		}
+		cycle[n] = true
 		if n % 2 == 0 {
 			n /= 2
 		} else {
