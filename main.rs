@@ -10,7 +10,7 @@ fn collatz(mut n: u64) -> bool {
 }
 
 fn main() {
-    for n in 1000000..5000001 {
+    for n in 1..5000001 {
         collatz(n);
     }
     println!("all numbers checked");
