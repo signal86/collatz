@@ -1,5 +1,9 @@
 package main
 
+import (
+	"runtime"
+)
+
 func collatz(n uint64) bool {
 	for n != 1 {
 		if n % 2 == 0 {
@@ -12,7 +16,8 @@ func collatz(n uint64) bool {
 }
 
 func main() {
+	runtime.GOMAXPROCS(16)
 	for n := uint64(1); n < 5000000001; n++ {
-		collatz(n)
+		go collatz(n)
 	}
 }
